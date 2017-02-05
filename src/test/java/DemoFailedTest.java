@@ -15,7 +15,7 @@ public class DemoFailedTest extends TestInit{
     Utils util;
 
     @Stories("Демонстрационные тесты")
-    @Title("ДемоТест1")
+    @Title("ДемоТест1 с ошибкой")
     @Test
     void testBody() {
         AuthPage authPage = new AuthPage(driver);
