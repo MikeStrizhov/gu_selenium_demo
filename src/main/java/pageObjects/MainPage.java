@@ -2,6 +2,7 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Step;
 import utils.Utils;
 
@@ -60,6 +61,7 @@ public class MainPage extends Page{
     public void clickToRequestsElem () {
         click(requestsLink);
         Utils.sleep(3000);
+        Assert.fail("Принудительная ошибка теста");
     }
 
     @Step("Открываем свежесозданное обращение")

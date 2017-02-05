@@ -24,7 +24,6 @@ public class DemoFailedTest extends TestInit{
 
         MainPage mainPage = new MainPage(driver);
         mainPage.selectMenus();
-        Assert.fail("Принудительная ошибка теста");
         mainPage.clickToRequestsElem();
 
         RequestsPage requestsPage = new RequestsPage(driver);
