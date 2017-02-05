@@ -1,4 +1,3 @@
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.AuthPage;
 import pageObjects.MainPage;
@@ -23,7 +22,7 @@ public class DemoFailedTest extends TestInit{
         authPage.doLogin();
 
         MainPage mainPage = new MainPage(driver);
-        mainPage.selectMenus();
+        mainPage.selectMenus(true);
         mainPage.clickToRequestsElem();
 
         RequestsPage requestsPage = new RequestsPage(driver);

@@ -39,12 +39,15 @@ public class MainPage extends Page{
     }
 
     @Step("Проходим по пунктам меню")
-    public void selectMenus() {
+    public void selectMenus(Boolean fail) {
         Utils.sleep(2000);
         selectMainMenuElemtByNum(2);
         Utils.sleep(2000);
         selectMainMenuElemtByNum(3);
         Utils.sleep(2000);
+        if(fail) {
+            Assert.fail("Принудительная ошибка теста");
+        }
         selectMainMenuElemtByNum(4);
         Utils.sleep(2000);
     }
@@ -61,7 +64,6 @@ public class MainPage extends Page{
     public void clickToRequestsElem () {
         click(requestsLink);
         Utils.sleep(3000);
-        Assert.fail("Принудительная ошибка теста");
     }
 
     @Step("Открываем свежесозданное обращение")

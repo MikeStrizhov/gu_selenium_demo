@@ -22,7 +22,7 @@ public class DemoTest extends TestInit{
         authPage.doLogin();
 
         MainPage mainPage = new MainPage(driver);
-        mainPage.selectMenus();
+        mainPage.selectMenus(false);
         mainPage.clickToRequestsElem();
 
         RequestsPage requestsPage = new RequestsPage(driver);
