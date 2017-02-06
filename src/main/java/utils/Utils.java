@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Attachment;
 import ru.yandex.qatools.allure.annotations.Step;
 
@@ -32,6 +33,7 @@ public class Utils extends Waiters{
             driver.findElement(by).click();
             return true;
         } catch (Exception e) {
+            Assert.fail("Элемент "+by.toString()+" не существует");
             return false;
         }
     }

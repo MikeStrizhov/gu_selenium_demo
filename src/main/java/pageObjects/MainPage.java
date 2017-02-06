@@ -2,7 +2,6 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Step;
 import utils.Utils;
 
@@ -46,7 +45,7 @@ public class MainPage extends Page{
         selectMainMenuElemtByNum(3);
         Utils.sleep(2000);
         if(fail) {
-            Assert.fail("Принудительная ошибка теста");
+            click(By.id("NON_EXISTING_BUTTON"));
         }
         selectMainMenuElemtByNum(4);
         Utils.sleep(2000);

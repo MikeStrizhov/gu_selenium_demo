@@ -73,6 +73,7 @@ public class RequestsPage extends Page{
 
     @Step("Берём обращение в работу")
     public void getToWork() {
+        Utils.sleep(5000);
         click(getToWorkButton);
         Utils.sleep(5000);
         click(finishButton);

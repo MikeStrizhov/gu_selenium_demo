@@ -11,7 +11,7 @@ import utils.Utils;
  * Created by Administrator on 12/26/2016.
  */
 @Features("Тестирование ЕВРАЗ")
-public class DemoFailedTest extends TestInit{
+public class DemoZFailedTest extends TestInit{
     Utils util;
 
     @Stories("Демонстрационные тесты")
