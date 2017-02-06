@@ -76,11 +76,11 @@ public class MainPage extends Page{
     public void remove() {
         Utils.sleep(2000);
         click(removeNewButton);
-        Utils.sleep(1000);
+        Utils.sleep(3000);
         click(yesButton);
-        Utils.sleep(1000);
+        Utils.sleep(3000);
         click(moreButton);
-        Utils.sleep(1000);
+        Utils.sleep(3000);
         click(deleteLink);
         Utils.sleep(2000);
         click(fullRemove);
