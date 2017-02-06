@@ -85,5 +85,6 @@ public class MainPage extends Page{
         click(deleteLink);
         Utils.sleep(2000);
         click(fullRemove);
+        Utils.sleep(2000);
     }
 }
