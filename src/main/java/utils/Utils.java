@@ -1,9 +1,6 @@
 package utils;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Attachment;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -29,7 +26,7 @@ public class Utils extends Waiters{
     @Step("Клик мышью на элементе {0}")
     public boolean click(By by) {
         try {
-            waitForElement(driver.findElement(by));
+            waitForElement(tryToFindElem(by,driver));
             driver.findElement(by).click();
             return true;
         } catch (Exception e) {
@@ -42,7 +39,7 @@ public class Utils extends Waiters{
     public boolean sendKeys(By by,String text) {
         try {
             sleep(100);
-            waitForElement(driver.findElement(by));
+            waitForElement(tryToFindElem(by,driver));
             driver.findElement(by).clear();
             driver.findElement(by).sendKeys(text);
             sleep(100);
@@ -56,7 +53,7 @@ public class Utils extends Waiters{
     public String getText(By by) {
         String ret = "";
         try {
-            waitForElement(driver.findElement(by));
+            waitForElement(tryToFindElem(by,driver));
             ret = driver.findElement(by).getText();
             if(ret.equals("")) {
                 ret = driver.findElement(by).getAttribute("value");
@@ -141,5 +138,23 @@ public class Utils extends Waiters{
     @Attachment(value = "{0}", type = "text/plain")
     public String saveTextLog(String message) {
         return message;
+    }
+
+    public static WebElement tryToFindElem(By by, WebDriver driver) {
+        WebElement elem = null;
+        for(int i=0;i<10;i++) {
+            try {
+                elem = driver.findElement(by);
+            } catch (Exception e) {
+                Utils.sleep(3000);
+            }
+            if(elem!=null) {
+                break;
+            }
+        }
+        if(elem == null) {
+            System.out.println("Элемент не обнаружен");
+        }
+        return elem;
     }
 }

@@ -71,17 +71,7 @@ public class Waiters {
     }
 
     public void waitForElement(final By by) {
-        WebElement elem = null;
-        for(int i=0;i<10;i++) {
-            try {
-                elem = driver.findElement(by);
-            } catch (Exception e) {
-                Utils.sleep(3000);
-            }
-            if(elem!=null) {
-                break;
-            }
-        }
+        WebElement elem = Utils.tryToFindElem(by, driver);
         waitForElement(elem);
     }
 }
