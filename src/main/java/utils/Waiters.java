@@ -14,6 +14,8 @@ import ru.yandex.qatools.allure.annotations.Step;
 public class Waiters {
     WebDriver driver;
     final int WAITTIMEOUT = 10;
+    //таймаут для ожидания между шагами
+    public final int WAIT_TIMEOUT_FOR_STEP = 500;
 
 
     public Waiters(WebDriver drv) {
