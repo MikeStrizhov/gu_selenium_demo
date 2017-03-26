@@ -1,9 +1,14 @@
 package pageObjects;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Step;
 import utils.Properties;
+
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by Michael Strizhov on 25.03.2017.
@@ -25,6 +30,12 @@ public class KindergartenServiceStep2Page extends Page  {
     public By fieldBirthCertificateDate = By.xpath("//*[@id=\"file.1Date\"]");
     public By fieldBirthCertificateOrgan = By.xpath("//input[@name=\"field[file.1.new_passport_place]\"]");
 
+    public By fieldDocCreaterdPlace = By.xpath("//div[@id='A_Sh3_Block1_List2_chosen']/a");
+    public By fieldDocCreatedPlaceFirstElem = By.xpath("//div[@id='A_Sh3_Block1_List2_chosen']/div/ul/li[2]");
+    public By fieldDocCreatedPlaceSecondElem = By.xpath("//div[@id='A_Sh3_Block1_List2_chosen']/div/ul/li[3]");
+
+    public By nextButton = By.id("button_next");
+    public By cancelElkSaveButton = By.id("elk-save-cancel-button");
 
     public By field1 = By.xpath("");
 
@@ -92,5 +103,16 @@ public class KindergartenServiceStep2Page extends Page  {
         //ToDo write code - check for step??
     }
 
+    @Step("В поле \"Место выдачи свидетельства о рождении\" выбрать \"Москва\" или \"Российская федерация\"")
+    public void selectPlaceOfDocCreated() {
+        click(fieldDocCreaterdPlace);
+        click(ThreadLocalRandom.current().nextInt(1, 3) == 1 ? fieldDocCreatedPlaceFirstElem : fieldDocCreatedPlaceSecondElem);
+    }
 
+    @Step("Нажать на кнопку \"Продолжить\".")
+    public void clickNext() {
+        click(nextButton);
+        click(cancelElkSaveButton);
+        Assert.assertTrue(driver.getPageSource().contains("Шаг 3. Сведения о льготах"));
+    }
 }

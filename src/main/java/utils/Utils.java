@@ -11,6 +11,7 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Administrator on 12/26/2016.
@@ -156,5 +157,16 @@ public class Utils extends Waiters{
             System.out.println("Элемент не обнаружен");
         }
         return elem;
+    }
+
+    //переключаемся между вкладками браузера
+    public void switchTabs(String tabName){
+        ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());
+        for (int i=0; i<newTab.size(); i++){
+            driver.switchTo().window(newTab.get(i));
+            if (driver.getTitle().contains(tabName)){
+                break;
+            }
+        }
     }
 }
