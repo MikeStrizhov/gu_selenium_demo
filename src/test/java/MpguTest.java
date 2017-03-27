@@ -580,27 +580,12 @@ public class MpguTest extends TestInit{
         =====================================================*/
         step4Page.clickSendButton();
 
-        sleep(10000);
+        sleep(5000);
        //
        //выход
         mpguMainPage.openPage();
         loginPage.pressLogout();
 
-/*        AuthPage authPage = new AuthPage(driver);
-        authPage.doLogin();
-
-        MainPage mainPage = new MainPage(driver);
-        mainPage.selectMenus(false);
-        mainPage.clickToRequestsElem();
-
-        RequestsPage requestsPage = new RequestsPage(driver);
-        requestsPage.addRequest();
-
-        mainPage.openNewReq();
-
-        requestsPage.getToWork();
-
-        mainPage.remove();*/
     }
 
 

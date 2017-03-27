@@ -23,10 +23,16 @@ public class LoginPage extends Page{
         super(driver);
         //Init page
         this.driver = driver;
+        waitersForLoginPage();
+    }
+
+    @Step("Производим вход в систему")
+    private void waitersForLoginPage() {
         waitForPageTitle("ВХОД В СИСТЕМУ");
         waitForElement(loginField);
         waitForElement(passwordField);
     }
+
     @Step("Ввод логина и пароля")
     public void enterLoginPassword() {
         sendKeys(loginField, Properties.getProperty("Step1_login"));
