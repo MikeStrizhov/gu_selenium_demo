@@ -2,7 +2,6 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Step;
 import utils.Properties;
 
@@ -71,7 +70,7 @@ public class KindergartenServiceStep4Page extends Page  {
         click(checkBoxBySMS);
     }
 
-    @Step("Включить чекбокс \"Уведомление по SMS\".")
+    @Step("В поле \"Телефон\" ввести корректные данные (10 цифр по маске (XXX ) XXX-XX-XX, где «Х» - цифра)")
     public void fillSMSNumber() {
         sleep(1000);
         sendKeys(parentPhonenumberForSms,Properties.getProperty("Step76_SMS"));
