@@ -107,13 +107,14 @@ public class KindergartenServiceStep1Page extends Page {
 //        scrollDown(".//a[@class=\"white_link\"]");
         sleep(2000);
         scrollDown("//*[@id=\"body\"]/div/h1");
-        sleep(500);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
 
         click(linkApplicationInfo);
         //ToDo write code - check for step6
     }
 
     public void pressApplicationInfo2() {
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(linkApplicationInfo2);
         //ToDo write code - check for step6
     }
@@ -127,12 +128,14 @@ public class KindergartenServiceStep1Page extends Page {
 
     @Step("Нажать на символ \"Х\" или на кнопку \"Закрыть\"")
     public void pressCloseApplicationInfo() {
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         waitForElement(linkCloseApplicationInfo);
         click(linkCloseApplicationInfo);
         //ToDo write code - check for step7
     }
     @Step("Нажать на ссылку \"Распечатать\"")
     public void pressPrintApplicationInfo() {
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(linkPrintApplicationInfo);
         //ToDo подумать над печатью
 
@@ -141,12 +144,13 @@ public class KindergartenServiceStep1Page extends Page {
     @Step("Нажать на ссылку \"часто задаваемые вопросы\".")
     public void pressFAQLink() {
         //scrollDown(linkFAQXpath);
-        sleep(1000);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(linkFAQ);
         //ToDo write code - check for step10
     }
     public void openPage() {
         driver.get(URL);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         waitForPageTitle(PAGE_TITLE);
     }
     @Step("В поле \"Дата рождения ребенка\" ввести корректную дату (возраст ребенка должен быть менее 7 лет)")
@@ -200,24 +204,28 @@ public class KindergartenServiceStep1Page extends Page {
     }
     @Step("Кликнуть на значок \"?\" справа от чекбокса \"Направить ребенка для зачисления в группу кратковременного пребывания\"")
     public void clickShortTermGroupStartTimeInfo() {
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(linkShortTermGroupStartTimeInfo);
         //ToDo write code - check for step17
     }
     @Step("'Закрыть подсказку, нажав на \"х\" или нажав на любую область страницы")
     public void clickStep18AnyplaceOnPage() {
         //click(linkStep18AnyplaceOnPage);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(fieldChildBirthDate);
         //ToDo write code - check for step18
     }
 
     @Step("В поле \"Тип регистрации ребенка\" радиокнопку \"По месту пребывания на территории города Москвы\".")
     public void clickPlaceRegistrationOfChild() {
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(radioPlaceRegistrationOfChild);
         //ToDo write code - check for step19
     }
 
     @Step("В поле \"Тип регистрации ребенка\" радиокнопку \"По месту пребывания на территории города Москвы\".")
     public void checkTextZelenograd() {
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         waitForElement(textZelenograd);
         String stringZelenograd =  getText(textZelenograd);
         log.info("Шаг 20 найденн текстовый блок\n" + stringZelenograd);
@@ -228,6 +236,7 @@ public class KindergartenServiceStep1Page extends Page {
 
     @Step("Убедиться, что чекбокс \"Улицы нет в спиcке\" выключен.")
     public void checkIsCheckboxStreetNotInList(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         scrollDown("//*[@id=\"A_Sh2_Block3_Flag1\"]");
         sleep(WAIT_TIMEOUT_FOR_STEP);
 //        logWebElement(checkboxStreetNotInList);
@@ -254,8 +263,10 @@ public class KindergartenServiceStep1Page extends Page {
     }
 
     public void clickOnCheckboxStreetNotInList(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         //ToDo убедиться в необходимости скролла
         scrollDown("//*[@id=\"region_dummy_form_chosen\"]");
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(checkboxStreetNotInListForClick);
     }
 
@@ -267,6 +278,7 @@ public class KindergartenServiceStep1Page extends Page {
 
     @Step("Кликнуть на значек \"?\" справа от поля \"Улица\".")
     public void clickOnStreetInfoButton(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(linkStreetInfoButton);
 
         //ToDo write code - check for step22
@@ -274,6 +286,7 @@ public class KindergartenServiceStep1Page extends Page {
 
     @Step("В поле \"Улица\" ввести первые несколько букв названия необходимой улицы.")
     public void enterFirstLettersChildRegistrationStreet(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         sendKeys(fieldChildRegistrationStreet, Properties.getProperty("Step23_FirstLettersChildRegistrationStreet"));
         //ToDo write code - check for step23
     }
@@ -282,6 +295,7 @@ public class KindergartenServiceStep1Page extends Page {
     public void enterChildRegistrationStreet(){
         String choice = Properties.getProperty("Step24_ChildRegistrationStreet");
         //enterChildRegistrationStreet(choice);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         sendKeys(fieldChildRegistrationStreet, choice);
         String xPath = "/html/body/ul/li/*//*[contains(text()[normalize-space()], '" + choice +"')]";
 
@@ -295,9 +309,13 @@ public class KindergartenServiceStep1Page extends Page {
     public void enterChildRegistrationHouse(){
         String choice = Properties.getProperty("Step25_ChildRegistrationHouse");
         String xPath = "//*[@id=\"A_addr1_house_chosen\"]/div/ul/li[contains(text()[normalize-space()], '" + choice + "')]";
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         scrollDown(selectChildRegistrationHouse);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(selectChildRegistrationHouse);
         By byForChoice = By.xpath(xPath);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(byForChoice);
 
         //ToDo write code - check for step25
@@ -308,10 +326,12 @@ public class KindergartenServiceStep1Page extends Page {
         String choice = Properties.getProperty("Step26_ChildRegistrationFlat");
         String xPath = "/html/body/ul/li/a[contains(text()[normalize-space()], '" + choice + "')]";
 
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         scrollDown(selectChildRegistrationFlat);
         sleep(WAIT_TIMEOUT_FOR_STEP);
         click(selectChildRegistrationFlat);
         By byForChoice = By.xpath(xPath);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(byForChoice);
 
         //ToDo write code - check for step26
@@ -319,11 +339,11 @@ public class KindergartenServiceStep1Page extends Page {
 
     @Step("Включить чекбокс \"Улицы нет в списке\".")
     public void clickCheckboxStreetNotInList(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         clickOnCheckboxStreetNotInList();
         boolean isSelected =  stateOfCheckboxStreetNotInList();
         Assert.assertTrue("Шаг 27, чекбокс \"Улицы нет в спиcке\" выключен.", isSelected);
 
-        sleep(WAIT_TIMEOUT_FOR_STEP);
         //ToDo write code - check for step27
     }
 
@@ -336,26 +356,36 @@ public class KindergartenServiceStep1Page extends Page {
             "- Строение\n" +
             "- Квартира\n")
     public void enterChildRegistration(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         enterChildRegistrationDistrict(Properties.getProperty("Step28_ChildRegistrationDistrict"));
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         enterChildRegistrationRayon(Properties.getProperty("Step28_ChildRegistrationRayon"));
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         enterChildRegistrationStreet(Properties.getProperty("Step28_ChildRegistrationStreet"));
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         enterChildRegistrationHouse(Properties.getProperty("Step28_ChildRegistrationHouse"));
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         enterChildRegistrationCorpus(Properties.getProperty("Step28_ChildRegistrationCorpus"));
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         enterChildRegistrationFlat(Properties.getProperty("Step28_ChildRegistrationFlat"));
 
     }
 
     public void enterChildRegistrationDistrict(String districtName){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(selectChildRegistrationDistrict);
         // //*[@id="step_1"]//li[contains(text()[normalize-space()], 'Северный административный округ')]
         String xPath = "//*[@id=\"step_1\"]//li[contains(text()[normalize-space()], '" + districtName + "')]";
         By byForChoice = By.xpath(xPath);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(byForChoice);
     }
     public void enterChildRegistrationRayon(String name) {
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(selectChildRegistrationRayon);
         String xPath = "//*[@id=\"step_1\"]//li[contains(text()[normalize-space()], '" + name + "')]";
         By byForChoice = By.xpath(xPath);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(byForChoice);
     }
 
@@ -381,6 +411,7 @@ public class KindergartenServiceStep1Page extends Page {
 
     @Step("В блоке \"За данным адресом закреплены следующие образовательные организации:\" включить радиокнопку \"Поиск по названию\"")
     public void pressButtonSearchSchoolByName() {
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         scrollDown(buttonSearchSchoolByName);
         sleep(WAIT_TIMEOUT_FOR_STEP);
         click(buttonSearchSchoolByName);
@@ -390,6 +421,7 @@ public class KindergartenServiceStep1Page extends Page {
 
     @Step("'Включить радиокнопку \"Поиск по местоположению\"")
     public void pressButtonSearchSchoolByPlace() {
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         scrollDown(buttonSearchSchoolByPlace);
         sleep(WAIT_TIMEOUT_FOR_STEP);
         click(buttonSearchSchoolByPlace);
@@ -399,18 +431,21 @@ public class KindergartenServiceStep1Page extends Page {
 
     @Step("В поле \"Поиск\" ввести название учебного заведения, например, \"Детский сад №20\".")
     public void enterSchoolNameForSearch(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         sendKeys(fieldSchoolNameForSearch,Properties.getProperty("Step32_SchoolName"));
         //ToDo write code - check for step32
     }
 
     @Step("Нажать на кнопку \"Найти\".")
     public void pressSearchBySchoolName(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(buttonSearchBySchoolName);
         //ToDo write code - check for step33
     }
 
     @Step("В поле \"Место нахождения\" включить \"метро\"")
     public void clickRadiobuttonSearchSchoolByMetro(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         scrollDown(radiobuttonSearchSchoolByMetro);
         sleep(WAIT_TIMEOUT_FOR_STEP);
         click(radiobuttonSearchSchoolByMetro);
@@ -418,6 +453,7 @@ public class KindergartenServiceStep1Page extends Page {
     }
     @Step("В поле \"Место нахождения\" включить \"округ\"")
     public void clickRadiobuttonSearchSchoolByRayon(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         scrollDown(radiobuttonSearchSchoolByRayon);
         sleep(WAIT_TIMEOUT_FOR_STEP);
         click(radiobuttonSearchSchoolByRayon);
@@ -426,6 +462,7 @@ public class KindergartenServiceStep1Page extends Page {
 
     @Step("В поле \"Округ\" выбрать из списка любое значение.")
     public void enterSchoolDistrict(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(selectSchoolDistrict);
         sleep(WAIT_TIMEOUT_FOR_STEP);
         By by1 = By.xpath("//*[@id=\"Z_okrug_rayon_div\"]//li[contains(text()[normalize-space()], '"+ Properties.getProperty("Step36_SchoolDistrict") +"')]");
@@ -436,6 +473,7 @@ public class KindergartenServiceStep1Page extends Page {
 
     @Step("В поле \"Район\" выбрать из списка произвольное значение.")
     public void enterSchoolRayon(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(selectSchoolRayon);
         sleep(WAIT_TIMEOUT_FOR_STEP);
         By by1 = By.xpath("//*[@id=\"Z_okrug_rayon_div\"]//li[contains(text()[normalize-space()], '"+ Properties.getProperty("Step37_SchoolRayon") +"')]");
@@ -446,31 +484,37 @@ public class KindergartenServiceStep1Page extends Page {
 
     @Step("В поле \"Тип образовательной организации\" включить чекбокс \"Детский сад\".")
     public void clickCheckboxKinderGarden(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(checkboxKinderGarden);
         //ToDo write code - check for step38
     }
 
     @Step("Нажать на кнопку \"Найти\"")
     public void clickFindKinderGarden(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         scrollDown(buttonFindKinderGarden);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(buttonFindKinderGarden);
         //ToDo write code - check for step39
     }
 
     @Step("Нажать на кнопку \"Найти\"")
     public void clickHideMap(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(clickHideMap);
         //ToDo write code - check for step41
     }
 
     @Step("Нажать на кнопку \"Найти\"")
     public void clickShowMap(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(clickShowMap);
         //ToDo write code - check for step42
     }
 
     @Step("В поле \"Метро\" выбрать из списка необходимое метро")
     public void selectSearchSchoolByMetro(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(selectSearchSchoolByMetro);
         sleep(WAIT_TIMEOUT_FOR_STEP);
         By by1 = By.xpath("//*[@id=\"Z_metro_div\"]//li[contains(text()[normalize-space()], '"+ Properties.getProperty("Step46_SchoolByMetro") +"')]");
@@ -483,7 +527,9 @@ public class KindergartenServiceStep1Page extends Page {
     public void searchSchoolByMetro(){
         //Этот чекбукс включен по умолчанию
         //click(checkboxKinderGarden);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(checkboxSchoolWithKinderGarden);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(buttonSearchBySchoolName);
         //ToDo write code - check for step47
     }
@@ -493,10 +539,15 @@ public class KindergartenServiceStep1Page extends Page {
         sleep(WAIT_TIMEOUT_FOR_STEP);
         sleep(WAIT_TIMEOUT_FOR_STEP);
         scrollDown(buttonSchoolWithKinderGarden1);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(buttonSchoolWithKinderGarden1);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         scrollDown(buttonSchoolWithKinderGarden2);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(buttonSchoolWithKinderGarden2);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         scrollDown(buttonSchoolWithKinderGarden3);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(buttonSchoolWithKinderGarden3);
         //ToDo write code - check for step48
     }
@@ -505,7 +556,9 @@ public class KindergartenServiceStep1Page extends Page {
 
     @Step("Нажать на кнопку \"Продолжить\"")
     public void pressContinue(){
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         scrollDown(buttonContinue);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(buttonContinue);
         //ToDo write code - check for step50
     }

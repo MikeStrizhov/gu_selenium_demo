@@ -60,6 +60,7 @@ public class KindergartenServiceStep2Page extends Page  {
     }
     @Step("Отметить чек-бокс \"Нет отчества\".")
     public void clickNotHaveMiddleName() {
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(labelNotHaveMiddleName);
         //ToDo write code - check for step52
     }
@@ -76,14 +77,23 @@ public class KindergartenServiceStep2Page extends Page  {
             "            - Когда выдан (не ранее даты, указанной в поле \"Дата рождения\")\n" +
             "            - Кем выдан (100 символов)")
     public void fillBirthCertificateData() {
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         scrollDown(fieldBirthCertificateSeries);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(fieldBirthCertificateSeries);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         sendKeys(fieldBirthCertificateSeries, Properties.getProperty("Step55_CertificateSeries"));
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(fieldBirthCertificateNumber);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         sendKeys(fieldBirthCertificateNumber, Properties.getProperty("Step55_CertificateNumber"));
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(fieldBirthCertificateDate);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         sendKeys(fieldBirthCertificateDate, Properties.getProperty("Step55_CertificateDate"));
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(fieldBirthCertificateOrgan);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         sendKeys(fieldBirthCertificateOrgan, Properties.getProperty("Step55_CertificateOrgan"));
 
 
@@ -91,6 +101,7 @@ public class KindergartenServiceStep2Page extends Page  {
     }
 
     public void fillChildBirthDateStep2() {
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         sendKeys(fieldChildBirthDateStep2, Properties.getProperty("Step11_ChildBirthDate"));
     }
 
@@ -98,20 +109,26 @@ public class KindergartenServiceStep2Page extends Page  {
     public void doTest() {
         sleep(WAIT_TIMEOUT_FOR_STEP);
         scrollDown("//*[@id=\"body\"]/div/h1");
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(fieldChildMiddleName);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         sendKeys(fieldChildMiddleName, Properties.getProperty("Step11_ChildBirthDate"));
         //ToDo write code - check for step??
     }
 
     @Step("В поле \"Место выдачи свидетельства о рождении\" выбрать \"Москва\" или \"Российская федерация\"")
     public void selectPlaceOfDocCreated() {
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(fieldDocCreaterdPlace);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(ThreadLocalRandom.current().nextInt(1, 3) == 1 ? fieldDocCreatedPlaceFirstElem : fieldDocCreatedPlaceSecondElem);
     }
 
     @Step("Нажать на кнопку \"Продолжить\".")
     public void clickNext() {
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(nextButton);
+        sleep(WAIT_TIMEOUT_FOR_STEP);
         click(cancelElkSaveButton);
         Assert.assertTrue(driver.getPageSource().contains("Шаг 3. Сведения о льготах"));
     }
